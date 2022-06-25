@@ -19,7 +19,7 @@ namespace eShopSolution.Data.Configuration
 
             builder.Property(x => x.Id).IsRequired().IsUnicode(false).HasMaxLength(5);
 
-            builder.Property(x => x.Name).IsRequired().HasMaxLength(5);
+            builder.Property(x => x.Name).IsRequired().HasMaxLength(50);
         }
     }
 }
