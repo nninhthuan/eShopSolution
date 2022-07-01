@@ -20,6 +20,7 @@ namespace eShopSolution.Data.Configuration
             builder.Property(x => x.Id).UseIdentityColumn();
 
             builder.HasOne(x => x.Product).WithMany(x => x.Carts).HasForeignKey(x => x.ProductId);
+           
         }
     }
 }
