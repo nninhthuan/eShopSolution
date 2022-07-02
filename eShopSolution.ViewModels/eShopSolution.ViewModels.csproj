@@ -66,11 +66,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Catalog\Products\Manage\GetProductPagingRequest.cs" />
-    <Compile Include="Catalog\Products\Manage\ProductCreateRequest.cs" />
-    <Compile Include="Catalog\Products\Manage\ProductUpdateRequest.cs" />
+    <Compile Include="Catalog\Products\GetManageProductPagingRequest.cs" />
+    <Compile Include="Catalog\Products\ProductCreateRequest.cs" />
+    <Compile Include="Catalog\Products\ProductUpdateRequest.cs" />
     <Compile Include="Catalog\Products\ProductViewModel.cs" />
-    <Compile Include="Catalog\Products\Public\GetProductPagingRequest.cs" />
+    <Compile Include="Catalog\Products\GetPublicProductPagingRequest.cs" />
     <Compile Include="Catalog\Products\ProductImageViewModel.cs" />
     <Compile Include="Common\PagedResult.cs" />
     <Compile Include="Common\PagingRequestBase.cs" />
