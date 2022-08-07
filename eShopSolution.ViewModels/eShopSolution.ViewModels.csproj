@@ -474,6 +474,7 @@
     <Compile Include="System\Users\LoginRequestValidator.cs" />
     <Compile Include="System\Users\RegisterRequest.cs" />
     <Compile Include="System\Users\RegisterRequestValidator.cs" />
+    <Compile Include="System\Users\UserDeleteRequest.cs" />
     <Compile Include="System\Users\UserUpdateRequest.cs" />
     <Compile Include="System\Users\UserVm.cs" />
   </ItemGroup>
