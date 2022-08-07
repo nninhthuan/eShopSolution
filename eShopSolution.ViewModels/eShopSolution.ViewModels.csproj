@@ -463,6 +463,7 @@
     <Compile Include="Catalog\Products\GetPublicProductPagingRequest.cs" />
     <Compile Include="Catalog\ProductImages\ProductImageViewModel.cs" />
     <Compile Include="Common\PagedResult.cs" />
+    <Compile Include="Common\PagedResultBase.cs" />
     <Compile Include="Common\PagingRequestBase.cs" />
     <Compile Include="Common\RequestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
