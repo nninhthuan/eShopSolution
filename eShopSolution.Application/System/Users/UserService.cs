@@ -38,7 +38,7 @@ namespace eShopSolution.Application.System.Users
         public async Task<ApiResult<string>> Authenticate(LoginRequest request)
         {
             var user = await _userManager.FindByNameAsync(request.UserName);
-            if (user == null) return null;
+            if (user == null) return new ApiErrorResult<string>("Tài khoản không tồn tại");
 
             var result = _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, true);
             if (!result.IsCompletedSuccessfully)
