@@ -459,7 +459,7 @@
     <Compile Include="Catalog\Products\GetManageProductPagingRequest.cs" />
     <Compile Include="Catalog\Products\ProductCreateRequest.cs" />
     <Compile Include="Catalog\Products\ProductUpdateRequest.cs" />
-    <Compile Include="Catalog\Products\ProductViewModel.cs" />
+    <Compile Include="Catalog\Products\ProductVm.cs" />
     <Compile Include="Catalog\Products\GetPublicProductPagingRequest.cs" />
     <Compile Include="Catalog\ProductImages\ProductImageViewModel.cs" />
     <Compile Include="Common\ApiErrorResult.cs" />
