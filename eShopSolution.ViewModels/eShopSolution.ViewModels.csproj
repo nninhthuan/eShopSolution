@@ -457,6 +457,7 @@
     <Compile Include="Catalog\Categories\CategoryVm.cs" />
     <Compile Include="Catalog\ProductImages\ProductImageCreateRequest.cs" />
     <Compile Include="Catalog\ProductImages\ProductImageUpdateRequest.cs" />
+    <Compile Include="Catalog\Products\CategoryAssignRequest.cs" />
     <Compile Include="Catalog\Products\GetManageProductPagingRequest.cs" />
     <Compile Include="Catalog\Products\ProductCreateRequest.cs" />
     <Compile Include="Catalog\Products\ProductUpdateRequest.cs" />
