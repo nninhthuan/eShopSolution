@@ -1,12 +1,9 @@
-﻿using eShopSolution.AdminApp.Services;
-using eShopSolution.AdminApp.Models;
+﻿using eShopSolution.AdminApp.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using EShopSolution.Utilities.Constants;
 using Microsoft.AspNetCore.Http;
+using eShopSolution.ApiIntegration;
 
 namespace eShopSolution.AdminApp.Controllers.Components
 {
