@@ -44,7 +44,7 @@ namespace eShopSolution.ApiIntegration
             return JsonConvert.DeserializeObject<TResponse>(body);
         }
 
-        public async Task<List<T>> GetListAsync<T>(string url, bool requiredLogin = true)
+        public async Task<List<T>> GetListAsync<T>(string url, bool requiredLogin = false)
         {
             var sessions = _httpContextAccessor.HttpContext
                 .Session

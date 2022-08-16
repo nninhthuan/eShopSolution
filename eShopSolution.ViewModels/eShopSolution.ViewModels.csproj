@@ -483,6 +483,7 @@
     <Compile Include="System\Users\UserDeleteRequest.cs" />
     <Compile Include="System\Users\UserUpdateRequest.cs" />
     <Compile Include="System\Users\UserVm.cs" />
+    <Compile Include="Utilities\Slide\SlideVm.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -492,6 +493,5 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
