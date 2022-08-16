@@ -25,7 +25,7 @@ namespace eShopSolution.Application.System.Roles
                 { 
                     Id = x.Id,
                     Name = x.Name,
-                    Descrition = x.Description
+                    Description = x.Description
                 }).ToListAsync();
 
             return roles;

@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace eShopSolution.AdminApp.Services
+namespace eShopSolution.ApiIntegration
 {
     public class BaseApiClient
     {
@@ -44,7 +44,7 @@ namespace eShopSolution.AdminApp.Services
             return JsonConvert.DeserializeObject<TResponse>(body);
         }
 
-        public async Task<List<T>> GetListAsync<T>(string url, bool requiredLogin = true)
+        public async Task<List<T>> GetListAsync<T>(string url, bool requiredLogin = false)
         {
             var sessions = _httpContextAccessor.HttpContext
                 .Session
