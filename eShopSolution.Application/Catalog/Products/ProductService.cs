@@ -4,6 +4,7 @@ using eShopSolution.Data.Entities;
 using eShopSolution.ViewModels.Catalog.ProductImages;
 using eShopSolution.ViewModels.Catalog.Products;
 using eShopSolution.ViewModels.Common;
+using EShopSolution.Utilities.Constants;
 using EShopSolution.Utilities.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -58,16 +59,13 @@ namespace eShopSolution.Application.Catalog.Products
 
         public async Task<int> Create(ProductCreateRequest request)
         {
-            var product = new Product()
+            var languages = _context.Languages;
+            var translations = new List<ProductTranslation>();
+            foreach(var language in languages)
             {
-                Price = request.Price,
-                OriginalPrice = request.OriginalPrice,
-                Stock = request.Stock,
-                ViewCount = 0,
-                DateCreated = DateTime.Now,
-                ProductTranslations = new List<ProductTranslation>()
+                if(language.Id == request.LanguageId)
                 {
-                    new ProductTranslation()
+                    translations.Add(new ProductTranslation()
                     {
                         Name = request.Name,
                         Description = request.Description,
@@ -76,8 +74,27 @@ namespace eShopSolution.Application.Catalog.Products
                         SeoAlias = request.SeoAlias,
                         SeoTitle = request.SeoTitle,
                         LanguageId = request.LanguageId
-                    }
+                    });
                 }
+                else
+                {
+                    translations.Add(new ProductTranslation()
+                    {
+                        Name = SystemConstants.ProductConstants.NA,
+                        Description = SystemConstants.ProductConstants.NA,
+                        SeoTitle = SystemConstants.ProductConstants.NA,
+                        LanguageId = language.Id
+                    });
+                }
+            };
+            var product = new Product()
+            {
+                Price = request.Price,
+                OriginalPrice = request.OriginalPrice,
+                Stock = request.Stock,
+                ViewCount = 0,
+                DateCreated = DateTime.Now,
+                ProductTranslations = translations
             };
 
             //Save Image
@@ -121,7 +138,7 @@ namespace eShopSolution.Application.Catalog.Products
         {
             //1. Select join
             var query = from p in _context.Products
-                        join pt in _context.ProductTranslations on p.Id equals pt.ProductId
+                        join pt in _context.ProductTranslations on p.Id equals pt.ProductId 
                         join pic in _context.ProductInCategories on p.Id equals pic.ProductId into ppic
                         from pic in ppic.DefaultIfEmpty()
                         join c in _context.Categories on pic.CategoryId equals c.Id into picc
@@ -150,7 +167,7 @@ namespace eShopSolution.Application.Catalog.Products
                     Id = x.p.Id,
                     Name = x.pt.Name,
                     DateCreated = x.p.DateCreated,
-                    Description = x. pt.Description,
+                    Description = x.pt.Description,
                     Details = x.pt.Details,
                     LanguageId = x.pt.LanguageId,
                     OriginalPrice = x.p.OriginalPrice,
