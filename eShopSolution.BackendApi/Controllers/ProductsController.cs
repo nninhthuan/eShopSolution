@@ -24,7 +24,7 @@ namespace eShopSolution.BackendApi.Controllers
 
         //http:localhost:port/products?pageIndex=1&pageSize=10&CategoryId=
         [HttpGet("{languageId}")]
-        public async Task<IActionResult> GetAllPaging(string languageId, [FromQuery]GetPublicProductPagingRequest request)
+        public async Task<IActionResult> GetAllPaging(string languageId, [FromQuery] GetPublicProductPagingRequest request)
         {
             var products = await _productService.GetAllByCategoryId(languageId, request);
             return Ok(products);
@@ -58,9 +58,9 @@ namespace eShopSolution.BackendApi.Controllers
 
         [HttpPost]
         [Consumes("multipart/form-data")]
-        public async Task<IActionResult> Create([FromForm]ProductCreateRequest request)
+        public async Task<IActionResult> Create([FromForm] ProductCreateRequest request)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
@@ -70,16 +70,17 @@ namespace eShopSolution.BackendApi.Controllers
 
             var product = await _productService.GetById(productId, request.LanguageId);
 
-            return CreatedAtAction(nameof(GetById), new { id = productId},product);
+            return CreatedAtAction(nameof(GetById), new { id = productId }, product);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Update([FromForm] ProductUpdateRequest request)
+        [HttpPut("{productId}")]
+        public async Task<IActionResult> Update([FromRoute] int productId,[FromForm] ProductUpdateRequest request)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            request.Id = productId;
             var affectedResult = await _productService.Update(request);
             if (affectedResult == 0)
                 return BadRequest();
