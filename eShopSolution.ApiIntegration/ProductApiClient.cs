@@ -58,13 +58,13 @@ namespace eShopSolution.ApiIntegration
             requestContent.Add(new StringContent(request.Price.ToString()), "price");
             requestContent.Add(new StringContent(request.OriginalPrice.ToString()), "OriginalPrice");
             requestContent.Add(new StringContent(request.Stock.ToString()), "Stock");
-            requestContent.Add(new StringContent(request.Name.ToString()), "Name");
-            requestContent.Add(new StringContent(request.Description.ToString()), "Description");
+            requestContent.Add(new StringContent(string.IsNullOrEmpty(request.Name) ? "" : request.Name.ToString()), "name");
+            requestContent.Add(new StringContent(string.IsNullOrEmpty(request.Description) ? "" :  request.Description.ToString()), "Description");
 
-            requestContent.Add(new StringContent(request.Details.ToString()), "Details");
-            requestContent.Add(new StringContent(request.SeoDescription.ToString()), "SeoDescription");
-            requestContent.Add(new StringContent(request.SeoTitle.ToString()), "SeoTitle");
-            requestContent.Add(new StringContent(request.SeoAlias.ToString()), "SeoAlias");
+            requestContent.Add(new StringContent(string.IsNullOrEmpty(request.Details) ? "" : request.Details.ToString()), "Details");
+            requestContent.Add(new StringContent(string.IsNullOrEmpty(request.SeoDescription) ? "" : request.SeoDescription.ToString()), "SeoDescription");
+            requestContent.Add(new StringContent(string.IsNullOrEmpty(request.SeoTitle) ? "" : request.SeoTitle.ToString()), "SeoTitle");
+            requestContent.Add(new StringContent(string.IsNullOrEmpty(request.SeoAlias) ? "" : request.SeoAlias.ToString()), "SeoAlias");
             requestContent.Add(new StringContent(languageId), "price");
 
             var response = await client.PostAsync($"/api/products/", requestContent);
@@ -95,13 +95,13 @@ namespace eShopSolution.ApiIntegration
                 requestContent.Add(bytes, "ThumbnailImage", request.ThumbnailImage.FileName);
             }
 
-            requestContent.Add(new StringContent(request.Name.ToString()), "Name");
-            requestContent.Add(new StringContent(request.Description.ToString()), "Description");
-
-            requestContent.Add(new StringContent(request.Details.ToString()), "Details");
-            requestContent.Add(new StringContent(request.SeoDescription.ToString()), "SeoDescription");
-            requestContent.Add(new StringContent(request.SeoTitle.ToString()), "SeoTitle");
-            requestContent.Add(new StringContent(request.SeoAlias.ToString()), "SeoAlias");
+            requestContent.Add(new StringContent(string.IsNullOrEmpty(request.Name) ? "" : request.Name.ToString()), "Name");
+            requestContent.Add(new StringContent(string.IsNullOrEmpty(request.Description) ? "" : request.Description.ToString()), "Description");
+                                                
+            requestContent.Add(new StringContent(string.IsNullOrEmpty(request.Details) ? "" : request.Details.ToString()), "Details");
+            requestContent.Add(new StringContent(string.IsNullOrEmpty(request.SeoDescription) ? "" : request.SeoDescription.ToString()), "SeoDescription");
+            requestContent.Add(new StringContent(string.IsNullOrEmpty(request.SeoTitle) ? "" : request.SeoTitle.ToString()), "SeoTitle");
+            requestContent.Add(new StringContent(string.IsNullOrEmpty(request.SeoAlias) ? "" : request.SeoAlias.ToString()), "SeoAlias");
             requestContent.Add(new StringContent(languageId), "price");
 
             var response = await client.PutAsync($"/api/products/" + request.Id, requestContent);
@@ -156,6 +156,11 @@ namespace eShopSolution.ApiIntegration
         {
             var data = await GetListAsync<ProductVm>($"/api/products/lastest/{languageId}/{take}");
             return data;
+        }
+
+        public async Task<bool> DeleteProduct(int id)
+        {
+            return await Delete($"/api/products" + id);
         }
     }
 }
