@@ -460,6 +460,7 @@
     <Compile Include="Catalog\Products\CategoryAssignRequest.cs" />
     <Compile Include="Catalog\Products\GetManageProductPagingRequest.cs" />
     <Compile Include="Catalog\Products\ProductCreateRequest.cs" />
+    <Compile Include="Catalog\Products\ProductDeleteRequest.cs" />
     <Compile Include="Catalog\Products\ProductUpdateRequest.cs" />
     <Compile Include="Catalog\Products\ProductVm.cs" />
     <Compile Include="Catalog\Products\GetPublicProductPagingRequest.cs" />
