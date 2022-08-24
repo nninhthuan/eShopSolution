@@ -473,6 +473,8 @@
     <Compile Include="Common\PagingRequestBase.cs" />
     <Compile Include="Common\SelectItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sales\CheckoutRequest.cs" />
+    <Compile Include="Sales\OrderDetailVm.cs" />
     <Compile Include="System\Languages\LanguageVm.cs" />
     <Compile Include="System\Roles\RoleVm.cs" />
     <Compile Include="System\Users\GetUserPagingRequest.cs" />
